@@ -25,14 +25,14 @@ console.log(newDifference);
      
 //Use a loop to iterate through the array and calculate the average age. 
 
-//completed with for in loop
+//completed with for of loop
 var sum = 0;
   for(i of ages){
         sum += i;
       }
     
   average = sum/ ages.length;
-    console.log(average);
+    console.log(average, 'age average');
 
 //-------------------------------------------------------------------------
 
@@ -44,17 +44,17 @@ var names = ['Sam', 'Tommy', 'Tim', 'Sally', 'Buck', 'Bob'];
 // Use a loop to iterate through the array and calculate the average number of letters per name.
 var totalLetters = 0;
 for(i = 0; i < names.length; i++){
-    totalLetters = totalLetters + names[i].length;
+    totalLetters += names[i].length;
     console.log(i,"inside forloop, total letters:",totalLetters);
   }
 
   average = totalLetters/ names.length;
-  console.log(average);
+  console.log(average, 'total letters average');
 
 
-for ( var i of names){
-  console.log(names.join(' '))
-}
+// for ( var i of names){
+//   console.log(names.join(' '))
+// }
 
 //How do you access the last element of any array?
 
@@ -69,7 +69,8 @@ console.log(names[0]);
 
 //-------------------------------------------------------------------------
 
-//Create a new array called nameLengths. Write a loop to iterate over the previously created names array and add the length of each name to the nameLengths array.
+//Create a new array called nameLengths. loop to iterate over names array
+// add the length of each name to the nameLengths array.
 
 
 var nameLengths = names.map(function(element){
@@ -77,34 +78,38 @@ var nameLengths = names.map(function(element){
     return element.length;
   }
 });
-console.log(nameLengths)
+console.log(nameLengths,"name lengths array")
   
-//Write a loop to iterate over the nameLengths array and calculate the sum of all the elements in the array. 
+// use loop to iterate over the nameLengths array
+// and calculate the sum of all the elements in the array. 
 
-sum = nameLengths.map(function(element){
-  for(i = 0; i < element.length; i++){
-    return element.length;
+var sumName = 0;
+  for(i =0; i < nameLengths.length; i++){
+   sumName += nameLengths[i];
   }
-  console.log(sum);
-});
+  console.log(sumName);
+;
 
-//Write a function that takes two parameters, word and n, as arguments and returns the word concatenated to itself n number of times. (i.e. if I pass in ‘Hello’ and 3, I would expect the function to return ‘HelloHelloHello’)
 
+//function with two parameters, word and n, as arguments 
+//returns the word concatenated to itself n number of times. 
 function wordRepeater(word,n) {
   return word.repeat(n);
 }
 console.log(wordRepeater('Hello',3));
 
-// Write a function that takes two parameters, firstName and lastName, and returns a full name.The full name should be the first and the last name separated by a space.
+// function/ takes two parameters, firstName and lastName, and returns a full name.
+//The full name = separated by a space.
 
 function FullName(firstName,lastName){
   console.log (firstName + " " + lastName);
 }
 FullName('Alex',"Goode")
 
-//Write a function that takes an array of numbers and returns true if the sum of all the numbers in the array is greater than 100.
+//Write a function that takes an array of numbers and 
+// returns true if the sum of all the numbers in the array is greater than 100.
 
-var Arr1 = [31, 9, 20, 61, 2, 8, 28, 93];
+var Arr1 = [31, 9, 20,100];
 
 function greaterThanHundred(array){
 console.log("greater than 100",array);
@@ -116,6 +121,9 @@ for(var i = 0; i < array.length; i++ ){
   }
   if(arrSum > 100){
     console.log(arrSum,true)
+  }else{
+    (arrSum < 100)
+    console.log(arrSum,false);
   }
 }
 greaterThanHundred(Arr1);
@@ -137,53 +145,60 @@ receiverAver = receiverSum/ receiver.length;
 console.log(receiverAver);
 
 
-//Write a function that takes two arrays of numbers and returns true if the average of the elements in the first array is greater than the average of the elements in the second array.
+// find if average of the elements in the first array is greater
+// than the average of the elements in the second array
+// return true
+bb = [ 22, 21, 48, 34,10000];
+aa = [2, 89, 40, 44, 120, 8, 48, 16];
 
-var arrA = [1, 34, 40, 66, 22, 21, 48, 34];
-var arrB = [2, 89, 40, 44, 120, 8, 48, 16];
-
-var arrayAsum =0;
-var arrayBsum =0;
-
-arrAavg = 0;
-arrBavg = 0;
-
-function isArrALarger (arrA,ArrB){
-for(i = 0; i < arrA.length, ArrB.length; i++){
-arrayAsum += arrA[i];
-arrayBsum += arrB[i];
-arrAavg = arrayAsum/ arrA.length;
-arrBavg = arrayBsum/ arrB.length;
+function isArrALarger (arr1,arr2){
+  let array1sum= 0;
+  for(i of arr1){
+  array1sum += arr1[i];
   }
-}
-  if(arrAavg>arrBavg){
-    console.log(true)
+    let array2sum = 0;
+    for(i of arr2){
+    array2sum += arr2[i];
+    }
+  
+  var arr1avg = array1sum/ arr1.length;
+  var arr2avg = array2sum/ arr2.length;
+
+if(arr1 > arr2){
+  return true;
+    }
   }
-
-isArrALarger(arrA, arrB);
-//step one: declare function
-//step two: loop arrays to create sums
-//step three: divide sums/ length of arrays
-//step four:  if statement/ if array one is greater return true 
-
-
+  console.log(isArrALarger(aa,bb));
 
 //Write a function called willBuyDrink that takes a boolean isHotOutside, and a number moneyInPocket, and returns true if it is hot xoutside and if moneyInPocket is greater than 10.50.
 
 function willBuyDrink (isHotOutside,moneyInPocket){
-  if(isHotOutside == true && moneyInPocket > 10.50)
-  return true;
-}
-console.log(willBuyDrink(true,11))
-console.log(test);
+  if(isHotOutside == true && moneyInPocket > 10.50){
+    return true;
+  }
+} 
+console.log(willBuyDrink(true, 11));
+
 
 //Create a function of your own that solves a problem. In comments, write what the function does and why you created it.
+//My function determines if a product is on sale and takes an additional 30 % off the already reduced price.
+// Products that end with .99 are on sale. Products that are an integer will be full price. Sales tax is add to both on sale and full price items.
 
 
 
 
-//--------------------------------------------
-
-//Create a video, up to five minutes max, showing and explaining how your project works with an emphasis on the portions you contributed. 
-// This video should be done using screen share and voice over. 
-// This can easily be done using Zoom, although you don't have to use Zoom, it's just what we recommend. 
+isOnSale = productPrice =>{
+  if(productPrice % 1 === 0){
+    salesTax = productPrice * 0.06;
+    newSalePrice= salesTax + productPrice;
+    console.log(newSalePrice);
+    
+  } else {
+    thirtyOff = productPrice * .7
+    salesTax = productPrice * 0.06;
+    newPrice = salesTax + thirtyOff;
+    newPrice= newPrice.toFixed(2);
+    console.log(newPrice);
+    }
+  }
+    isOnSale (8.99);
